@@ -39,8 +39,9 @@ class PrototypesController < ApplicationController
       redirect_to prototype_path(@prototype.id)
     else
       render :edit, status: :unprocessable_entity
+    end
   end
-
+      
   def destroy
     @prototype = Prototype.find(params[:id])
     @prototype.destroy
@@ -58,6 +59,6 @@ end
     @prototype = Prototype.find(params[:id])
     unless current_user.id == @prototype.user.id
       redirect_to action: :index
-    end
   end
 end
+
